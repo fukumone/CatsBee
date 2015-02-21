@@ -1,40 +1,6 @@
-<input type="file" id="fileSelector" multiple accept="image/*" />
+<!-- <h3>ようこそ！画像をここに貼付けして下さい</h3> -->
+<input type="file" id="fileSelector" accept="image/*" />
 
 <ul id="fileContentList" style="list-style-type: none;"></ul>
 
-<script>
-  $(document).ready(function(){
-    $('#fileSelector').on('change', function(evt){
-      showImage(evt);
-    });
-
-    function showImage(evt){
-      var files = evt.target.files;
-      if (!files) {
-        alert("ファイルの読み込みに失敗しました、もう一度トライして下さい");
-        return;
-      }
-
-      var fileContent = $('#fileContentList');
-
-      var image = $('<img>').appendTo(fileContent);
-          image.css({
-            width: 100,
-            verticalAlign: 'middle',
-            margin: '4px 4px 4px 0'
-          });
-          image.attr('src', window.URL.createObjectURL(files[0]));
-
-      var span = $('span');
-          span.innerHTML = files[0].name;
-
-      var li = $('li');
-          li.append(image);
-          li.append(span);
-
-      fileContent.append(li);
-    }
-  });
-</script>
-
-<%= link_to '練習', :practice_top_index %>
+<%#= link_to '練習', :practice_top_index %>
