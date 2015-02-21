@@ -1,0 +1,23 @@
+<p>カスタムイベントが登録されています</p>
+<button>カスタムイベント実行</button>
+<span style="display:none;"></span>
+
+<script>
+  $("p").on("myCustomEvent", function(e, firstName, lastName){
+    $(this).text(lastName + firstName + "です, こんにちは!");
+    $("span").stop().css("opacity", 1)
+      .text("firstName = " + firstName + ", lastName = " + lastName)
+      .fadeIn(30).fadeOut(1000);
+  });
+  $("button").click(function () {
+    $("p").trigger("myCustomEvent", [ "太郎", "山田" ]);
+  });
+</script>
+
+<script>
+  $("p").on("myCustomEvent", function(e, firstName, lastName){
+    $(this).text(lastName)
+  });
+</script>
+
+<!-- on　後から追加した要素に対してイベントを追加 -->
