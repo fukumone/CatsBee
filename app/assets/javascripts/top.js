@@ -12,12 +12,17 @@ $(document).ready(function(){
 
     var fileContent = $('#fileContentList');
 
+    var form = $('form');
+        form.css({ margin: '0px' });
+
+    var input = form.find('input');
+        input.prev().remove();
+        input.remove();
+
     var image = $('<img>').appendTo(fileContent);
         image.css({
           width: 100,
-          height: 100,
-          verticalAlign: 'middle',
-          margin: 'auto'
+          height: 100
         });
         image.attr('src', window.URL.createObjectURL(files[0]));
 
@@ -29,21 +34,28 @@ $(document).ready(function(){
         li.append(span);
 
     fileContent.append(li);
+
     timer(image);
   }
 
   function timer(image){
-    // var sec = 0;
     var width = image.width();
     var height = image.height();
-    setInterval(function() {
-      // sec += 1;
-      width += 100;
-      height += 100;
+    var timerID = setInterval(function(){
+      width += 80;
+      height += 40;
       image.animate({
         width: width,
         height: height
       });
-    }, 1000);
+      stopTimer(timerID, image);
+    }, 1);
+  }
+
+  function stopTimer(timerID, image){
+    $('body').click(function(){
+      clearInterval(timerID);
+      image.stop();
+    });
   }
 });
