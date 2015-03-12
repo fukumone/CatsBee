@@ -1,16 +1,15 @@
 body{
   text-align: center;
-  background-image: url(../assets/green.jpg);
+  background: url(../assets/green.jpg);
   background-size: 100%;
   margin: 0;
   padding: 0;
-}
 
-form{
-  margin-top: 100px;
-  h3{
-    color: #13c5a9;
-  }
+  form{
+    margin-top: 330px;
+    h3{
+      color: #13c5a9;
+    }
 
   input {
     overflow: hidden;
@@ -18,5 +17,6 @@ form{
     padding: .5em;
     border: 1px solid #999;
     background-color: #13c5a9;
+    }
   }
 }
