@@ -10,34 +10,33 @@ $(document).ready(function(){
       return;
     }
 
-    var body = $('body');
-    var form = body.find('form');
+    var body = $('body'),
+        form = body.find('form'),
+        input = form.find('input'),
+        image = $('<img>').appendTo(body);
 
-    var input = form.find('input');
-        input.parent().remove();
-        input.remove();
-
+      input.parent().remove(),
+      input.remove();
     // 取得した画像
-    var image = $('<img>').appendTo(body);
-        image.attr('src', window.URL.createObjectURL(files[0]));
-        image.css({ display: 'none' });
-        body.append(image);
+      image.attr('src', window.URL.createObjectURL(files[0]));
+      image.css({ display: 'none' });
+      body.append(image);
 
     timer(image);
   }
 
   function timer(image){
-    var width = image.width();
-    var height = image.height();
-    var timerID = setInterval(function(){
-      width += 5;
-      height += 2;
-      image.animate({
-        width: width + '%',
-        height: height + '%'
-      });
-      stopTimer(timerID, image);
-    }, 1);
+    var width = image.width(),
+        height = image.height(),
+        timerID = setInterval(function(){
+          width += 5;
+          height += 2;
+          image.animate({
+            width: width + '%',
+            height: height + '%'
+          });
+          stopTimer(timerID, image);
+        }, 1);
   }
 
   function stopTimer(timerID, image){
